@@ -1,6 +1,7 @@
 package ru.gothmog.ws.core.model.auth;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 import org.hibernate.annotations.NaturalId;
 import ru.gothmog.ws.core.model.BaseEntity;
 
@@ -11,6 +12,7 @@ import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
+
 @Entity
 @Table(name = "users", schema = "jwt_auth",
         indexes = {
@@ -18,6 +20,7 @@ import java.util.Set;
         @Index(name = "unq_user_username", columnList = "username", unique = true)
 })
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User extends BaseEntity {
 
     @NotBlank

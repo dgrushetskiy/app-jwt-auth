@@ -33,3 +33,6 @@ CREATE TABLE IF NOT EXISTS jwt_auth.users_roles (
 ALTER TABLE jwt_auth.users_roles ADD CONSTRAINT fk_user_roles_user_id FOREIGN KEY ( user_id ) REFERENCES jwt_auth.users( id ) ON DELETE CASCADE ON UPDATE RESTRICT;
 
 ALTER TABLE jwt_auth.users_roles ADD CONSTRAINT fk_user_roles_role_id FOREIGN KEY ( role_id ) REFERENCES jwt_auth.roles( id ) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+INSERT INTO jwt_auth.roles (role_name) values ('ROLE_ADMIN');
+INSERT INTO jwt_auth.roles (role_name) values ('ROLE_USER');
