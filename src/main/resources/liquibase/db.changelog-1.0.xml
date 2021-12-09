@@ -5,4 +5,105 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
+    <changeSet author="dmitriy.grushetskiy" id="1.0.0">
+
+        <createTable schemaName="jwt_auth" tableName="users">
+
+            <column name="id" type="bigserial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_users_id" nullable="false"/>
+            </column>
+
+            <column name="username" type="varchar(100)" >
+                <constraints unique="true" uniqueConstraintName="unq_user_username" nullable="false"/>
+            </column>
+
+            <column name="first_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="last_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="email" type="varchar(100)">
+                <constraints unique="true" uniqueConstraintName="unq_user_email" nullable="false"/>
+            </column>
+
+            <column name="passwd" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created" type="timestamp" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated" type="timestamp" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="varchar(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+    <changeSet id="1.0.1" author="dmitriy.grushetskiy">
+        <createTable schemaName="jwt_auth" tableName="roles">
+            <column name="id" type="bigserial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="role_name" type="varchar">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="created" type="timestamp" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated" type="timestamp" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1.0.2" author="dmitriy.grushetskiy">
+        <createTable schemaName="jwt_auth" tableName="users_roles">
+            <column name="user_id" type="bigint">
+
+            </column>
+            <column name="role_id" type="bigint">
+
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.3" author="dmitriy.grushetskiy">
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="users_roles"
+                                 constraintName="fk_user_roles_user_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+
+    <changeSet id="1.0.4" author="dmitriy.grushetskiy">
+        <addForeignKeyConstraint baseColumnNames="role_id"
+                                 baseTableName="users_roles"
+                                 constraintName="fk_user_roles_role_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="roles"/>
+    </changeSet>
+
+    <changeSet id="1.0.5" author="dmitriy.grushetskiy">
+        <insert schemaName="jwt_auth" tableName="roles">
+            <column name="role_name" value="ROLE_USER"/>
+        </insert>
+
+        <insert schemaName="jwt_auth" tableName="roles">
+            <column name="role_name" value="ROLE_ADMIN"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>

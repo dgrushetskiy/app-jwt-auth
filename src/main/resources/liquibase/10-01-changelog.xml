@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1639083993374-1" author="gothmog (generated)">
+        <createTable schemaName="jwt_auth" tableName="roles">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_roles"/>
+            </column>
+            <column name="status" type="VARCHAR(25)"/>
+            <column name="created" type="DATETIME"/>
+            <column name="updated" type="DATETIME"/>
+            <column name="role_name" type="VARCHAR(100)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1639083993374-2" author="gothmog (generated)">
+        <createTable schemaName="jwt_auth" tableName="users">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users"/>
+            </column>
+            <column name="status" type="VARCHAR(25)"/>
+            <column name="created" type="DATETIME"/>
+            <column name="updated" type="DATETIME"/>
+            <column name="username" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(100)"/>
+            <column name="passwd" type="VARCHAR(100)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1639083993374-3" author="gothmog (generated)">
+        <createTable schemaName="jwt_auth" tableName="users_roles">
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users_roles"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users_roles"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1639083993374-4" author="gothmog (generated)">
+        <addUniqueConstraint columnNames="id" constraintName="uc_roles_id" schemaName="jwt_auth" tableName="roles"/>
+    </changeSet>
+    <changeSet id="1639083993374-5" author="gothmog (generated)">
+        <addUniqueConstraint columnNames="id" constraintName="uc_users_id" schemaName="jwt_auth" tableName="users"/>
+    </changeSet>
+    <changeSet id="1639083993374-6" author="gothmog (generated)">
+        <addUniqueConstraint columnNames="user_id" constraintName="uc_users_roles_user" schemaName="jwt_auth"
+                             tableName="users_roles"/>
+    </changeSet>
+    <changeSet id="1639083993374-7" author="gothmog (generated)">
+        <createIndex indexName="unq_role_name" schemaName="jwt_auth" tableName="roles" unique="true">
+            <column name="role_name"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="1639083993374-8" author="gothmog (generated)">
+        <createIndex indexName="unq_user_email" schemaName="jwt_auth" tableName="users" unique="true">
+            <column name="email"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="1639083993374-9" author="gothmog (generated)">
+        <createIndex indexName="unq_user_username" schemaName="jwt_auth" tableName="users" unique="true">
+            <column name="username"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="1639083993374-10" author="gothmog (generated)">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="users_roles" baseTableSchemaName="jwt_auth"
+                                 constraintName="fk_userol_on_role" referencedColumnNames="id"
+                                 referencedTableName="roles" referencedTableSchemaName="jwt_auth"/>
+    </changeSet>
+    <changeSet id="1639083993374-11" author="gothmog (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="users_roles" baseTableSchemaName="jwt_auth"
+                                 constraintName="fk_userol_on_user" referencedColumnNames="id"
+                                 referencedTableName="users" referencedTableSchemaName="jwt_auth"/>
+    </changeSet>
+
+</databaseChangeLog>
