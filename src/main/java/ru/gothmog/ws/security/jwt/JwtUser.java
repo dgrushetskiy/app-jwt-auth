@@ -10,7 +10,6 @@ import java.util.Collection;
 
 /**
  * Spring Security wrapper for class {@link User}.
- *
  */
 public class JwtUser implements UserDetails {
 

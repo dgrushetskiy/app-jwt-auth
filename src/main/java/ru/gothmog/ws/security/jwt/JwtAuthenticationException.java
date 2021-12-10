@@ -4,7 +4,6 @@ import org.springframework.security.core.AuthenticationException;
 
 /**
  * Authentication exception for JwtAppDemo application.
- *
  */
 public class JwtAuthenticationException extends AuthenticationException {
     public JwtAuthenticationException(String msg, Throwable t) {

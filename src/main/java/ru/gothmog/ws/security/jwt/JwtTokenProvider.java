@@ -26,7 +26,6 @@ import java.util.Set;
 
 /**
  * Util class that provides methods for generation, validation, etc. of JWT token.
- *
  */
 @Component
 public class JwtTokenProvider {

@@ -13,7 +13,6 @@ import java.io.IOException;
 
 /**
  * JWT token filter that handles all HTTP requests to application.
- *
  */
 public class JwtTokenFilter extends GenericFilterBean {
 
