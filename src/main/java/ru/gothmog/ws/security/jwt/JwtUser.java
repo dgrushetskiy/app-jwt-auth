@@ -3,10 +3,15 @@ package ru.gothmog.ws.security.jwt;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import ru.gothmog.ws.core.model.auth.User;
 
 import java.time.Instant;
 import java.util.Collection;
 
+/**
+ * Spring Security wrapper for class {@link User}.
+ *
+ */
 public class JwtUser implements UserDetails {
 
     private final Long id;

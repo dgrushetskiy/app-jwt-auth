@@ -10,6 +10,10 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Implementation of Factory Method for class {@link JwtUser}.
+ *
+ */
 public final class JwtUserFactory {
 
     public JwtUserFactory() {
