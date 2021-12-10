@@ -3,7 +3,7 @@ package ru.gothmog.ws.security.jwt;
 import org.springframework.security.core.AuthenticationException;
 
 /**
- * Authetication exception for JwtAppDemo application.
+ * Authentication exception for JwtAppDemo application.
  *
  */
 public class JwtAuthenticationException extends AuthenticationException {
