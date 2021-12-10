@@ -1,11 +1,16 @@
 package ru.gothmog.ws.core.model.auth;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
+import lombok.Data;
 import org.hibernate.annotations.NaturalId;
 import ru.gothmog.ws.core.model.BaseEntity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Index;
+import javax.persistence.Table;
+import javax.persistence.Enumerated;
+import javax.persistence.EnumType;
 
 @Entity
 @Table(name = "roles", schema = "jwt_auth",
