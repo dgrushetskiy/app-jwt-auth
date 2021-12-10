@@ -12,7 +12,10 @@ import ru.gothmog.ws.core.repository.RoleRepository;
 import ru.gothmog.ws.core.repository.UserRepository;
 import ru.gothmog.ws.core.service.UserService;
 
-import java.util.*;
+import java.util.Set;
+import java.util.List;
+import java.util.HashSet;
+import java.util.Optional;
 
 @Service
 @Slf4j

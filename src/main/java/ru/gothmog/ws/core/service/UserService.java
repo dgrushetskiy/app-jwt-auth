@@ -1,6 +1,5 @@
 package ru.gothmog.ws.core.service;
 
-import org.springframework.stereotype.Service;
 import ru.gothmog.ws.core.model.auth.User;
 
 import java.util.List;
